@@ -9,10 +9,12 @@ module.exports = {
       "build": "xcodebuild -workspace ios/expodetoxplugindemo.xcworkspace -configuration release -scheme expodetoxplugindemo -sdk iphonesimulator -derivedDataPath ios/build -UseModernBuildSystem=NO",
       "type": "ios.app"
     },
-    ios: {
-      type: "ios.app",
-      binaryPath: "bin/Exponent.app",
-    }
+    "android.release": {
+      type: "android.apk",
+      binaryPath: "android/app/build/outputs/apk/release/app-release.apk",
+      build:
+        "pushd android; ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release; popd",
+    },
   },
   devices: {
     simulator: {
