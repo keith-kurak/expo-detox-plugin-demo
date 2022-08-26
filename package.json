@@ -1,21 +1,41 @@
 {
   "name": "expo-detox-plugin-demo",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "detox:clean": "detox clean-framework-cache && detox build-framework-cache",
+    "build:ios": "detox build -c ios.sim.debug",
+    "test:ios": "detox test -c ios.sim.debug",
+    "e2e:ios": "npm run build:ios && npm run test:ios",
+    "build:ios-release": "detox build -c ios.sim.release",
+    "test:ios-release": "detox test -c ios.sim.release",
+    "e2e:ios-release": "npm run build:ios-release && npm run test:ios-release",
+    "build:android": "detox build -c android.emu.debug",
+    "test:android": "detox test -c android.emu.debug",
+    "e2e:android": "npm run build:android && npm run test:android",
+    "build:android-release": "detox build -c android.emu.release",
+    "test:android-release": "detox test -c android.emu.release --headless",
+    "e2e:android-release": "npm run build:android-release && npm run test:android-release",
+    "clean:android": "pushd android && ./gradlew clean && popd",
+    "start": "expo start --dev-client",
+    "ios": "expo run:ios",
+    "android": "expo run:android"
   },
   "dependencies": {
     "expo": "~46.0.9",
+    "expo-constants": "~13.2.3",
+    "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
-    "react-native": "0.69.4"
+    "react-dom": "18.0.0",
+    "react-native": "0.69.4",
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.18.13",
+    "@babel/runtime": "^7.18.9",
+    "@config-plugins/detox": "^3.0.0",
+    "detox": "^19.10.0",
+    "jest": "27.5.1"
   },
   "private": true
 }
