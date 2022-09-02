@@ -6,7 +6,7 @@ module.exports = {
   apps: {
     "ios.release": {
       "binaryPath": "./ios/build/Build/Products/Release-iphonesimulator/expodetoxplugindemo.app",
-      "build": "xcodebuild clean build ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO -workspace ios/expodetoxplugindemo.xcworkspace -configuration Release -scheme expodetoxplugindemo -sdk iphonesimulator -derivedDataPath ios/build -UseModernBuildSystem=NO",
+      "build": "xcodebuild build ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO -workspace ios/expodetoxplugindemo.xcworkspace -configuration Release -scheme expodetoxplugindemo -sdk iphonesimulator -derivedDataPath ios/build -UseModernBuildSystem=NO",
       "type": "ios.app"
     },
     "android.release": {
