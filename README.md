@@ -18,7 +18,7 @@ This version runs the build on whatever hardware is also running the tests. This
 By default, the "inline-build" workflow will run when updates are pushed. It can also be run manually from Github.
 
 ### How it works
-A detox-ready app can be built in EAS by using the `@config-plugins/detox` config plugin. We simulate the part of the EAS build process essential to running the tests by running `prebuild` to generate the native project, and then building a version, which is then tested by Detox. This allows for Detox integration that's quite close to the "bare" workflow described by the Detox documentation, and is less likely to break than the Expo Go version, which has the added complication of supporting multiple SDK's as well as many libraries that may not be needed by your app. In certain edge cases, this build will result in a test much more accurate to a production EAS build.
+A detox-ready app can be built in EAS by using the `@config-plugins/detox` config plugin. We simulate the part of the EAS build process essential to running the tests by running `prebuild` to generate the native project, and then building a version, which is then tested by Detox. This allows for Detox integration that's quite close to the workflow described by the Detox documentation, and avoids the added complexity of using the Expo Go app (e.g., supporting multiple SDK's as well as many libraries that may not be needed by your app). In certain edge cases, this build will result in a test much more accurate to a production EAS build.
 
 ## "EAS Build" version
 _Coming soon!_
