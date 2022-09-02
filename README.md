@@ -32,10 +32,15 @@ This version runs the build on EAS Build, and then downloads the completed build
 ### How to run locally
 1. Run `yarn`
 2. Save the build from EAS as **bin/detoxbuild.ipa**.
-3. Run `detox test --configuration ios.eas.sim.release`
+3. Run `detox test --configuration ios.sim.eas.release`
 
 ### How to run in Github Actions
 This one does not run by default, so specifically select "Use an existing EAS Build for Detox testing" from Github Actions
 
 ### How it works
 This is about the same as the above workflow, except, instead of building the app itself, it downloads the app from EAS, using JSON output from `eas build:list` to find the latest build for that profile. From there, the test runs the same.
+
+## Setting up in your own Expo project
+- Follow Detox's [Getting Started](https://wix.github.io/Detox/docs/introduction/getting-started/) and [iOS Setup](https://wix.github.io/Detox/docs/introduction/ios-dev-env) documents
+- Run `expo install @config-plugins/detox`.
+- Setup your **detox.config.js** and Github workflows similar to this repo

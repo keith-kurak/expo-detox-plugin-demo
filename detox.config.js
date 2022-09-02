@@ -9,12 +9,16 @@ module.exports = {
       "build": "xcodebuild build ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO -workspace ios/expodetoxplugindemo.xcworkspace -configuration Release -scheme expodetoxplugindemo -sdk iphonesimulator -derivedDataPath ios/build -UseModernBuildSystem=NO",
       "type": "ios.app"
     },
-    "android.release": {
+    /*"android.release": {
       type: "android.apk",
       binaryPath: "android/app/build/outputs/apk/release/app-release.apk",
       build:
         "pushd android; ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release; popd",
-    },
+    },*/
+    "ios.eas.release": {
+      "type": "ios.app",
+      "binaryPath": "bin/expodetoxplugindemo.app"
+    }
   },
   devices: {
     simulator: {
@@ -35,9 +39,17 @@ module.exports = {
       device: "simulator",
       app: "ios.release",
     },
-    "android.emu.release": {
+    /*"android.emu.release": {
       device: "emulator",
       app: "android.release",
+    },*/
+    "ios.sim.eas.release": {
+      device: "simulator",
+      app: "ios.eas.release",
     },
+    /*"android.emu.release": {
+      device: "emulator",
+      app: "android.release",
+    },*/
   },
 };
