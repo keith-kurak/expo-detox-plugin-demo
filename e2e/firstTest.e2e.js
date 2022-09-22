@@ -1,5 +1,7 @@
 import { device, element, by } from "detox";
 
+jest.setTimeout(120000);
+
 describe("Example", () => {
   beforeAll(async () => {
     await device.launchApp();
