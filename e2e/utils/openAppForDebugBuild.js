@@ -1,6 +1,7 @@
-const appConfig = require('../../../app.json');
+const appConfig = require('../../app.json');
 
 module.exports.openAppForDebugBuild = async function openAppForDebugBuild() {
+  const [platform] = process.env.DETOX_CONFIGURATION.split('.');
   await sleep(1000);
   await device.openURL({
     url: process.env.EXPO_USE_UPDATES
@@ -13,7 +14,7 @@ module.exports.openAppForDebugBuild = async function openAppForDebugBuild() {
 };
 
 const getDeepLinkUrl = url =>
-  `eastestsexample://expo-development-client/?url=${encodeURIComponent(url)}`;
+  `exp+com.expo.expodetoxplugindemo://expo-development-client/?url=${encodeURIComponent(url)}`;
 
 const getDevLauncherPackagerUrl = platform =>
   `http://localhost:8081/index.bundle?platform=${platform}&dev=true&minify=false&disableOnboarding=1`;

@@ -18,7 +18,8 @@
       "ios": {
         "simulator": true,
         "buildArtifactPaths": ["artifacts/**/*"]
-      }
+      },
+      "channel": "detox"
     }
   },
   "submit": {
