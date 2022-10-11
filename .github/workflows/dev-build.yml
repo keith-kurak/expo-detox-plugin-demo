@@ -8,7 +8,7 @@ on:
   push:
     branches: [ "dev-build-e2e" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "dev-build-e2e" ]
 
 jobs:
   build:
@@ -40,7 +40,7 @@ jobs:
         eas-version: latest
         token: ${{ secrets.EXPO_TOKEN }}
     - run: yarn install
-    - run: BUILDURL=$(eas build:list --json --limit=1 --buildProfile=detox | jq -r '.[0].artifacts.buildUrl')
+    - run: BUILDURL=$(eas build:list --non-interactive --json --limit=1 --buildProfile=detox | jq -r '.[0].artifacts.buildUrl')
     - run: |
         curl -L $BUILDURL --output eas-build.tar.gz
         mkdir -p bin
