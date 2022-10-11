@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/ c
 
     steps:
     - name: Check for EXPO_TOKEN
