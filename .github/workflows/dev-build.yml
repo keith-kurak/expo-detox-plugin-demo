@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Just-in-time inline simulator build for Detox
+name: Use an existing EAS Build for Detox testing
 
 on:
   workflow_dispatch:
@@ -21,21 +21,30 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+    - name: Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
+    - name: Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
     - run: yarn install
+    - run: BUILDURL=$(eas build:list --json --limit=1 --buildProfile=detox | jq -r '.[0].artifacts.buildUrl')
+    - run: |
+        curl -L $BUILDURL --output eas-build.tar.gz
+        mkdir -p bin
+        tar -xf eas-build.tar.gz -C bin
     - run: brew tap wix/brew
     - run: brew install applesimutils
-    - run: npx expo prebuild
-    - run: yarn detox build --configuration ios.sim.release
-    - run: yarn detox test --configuration ios.sim.release --record-logs all
-    - name: Upload artifacts
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-artifacts
-        path: artifacts
+    - run: yarn detox test --configuration ios.sim.eas.release
