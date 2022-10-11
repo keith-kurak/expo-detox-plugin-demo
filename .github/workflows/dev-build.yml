@@ -6,7 +6,7 @@ name: Use an existing EAS Build for Detox testing
 on:
   workflow_dispatch:
   push:
-    branches: [ "master" ]
+    branches: [ "dev-build-e2e" ]
   pull_request:
     branches: [ "master" ]
 
