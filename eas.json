@@ -16,7 +16,8 @@
       "distribution": "internal",
       "developmentClient": true,
       "ios": {
-        "simulator": true
+        "simulator": true,
+        "buildArtifactPaths": ["artifacts/**/*"]
       }
     }
   },

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start --dev-client",
+    "run-detox-local": "yarn start & yarn detox test --configuration ios --record-logs all",
     "ios": "expo run:ios",
     "android": "expo run:android"
   },
