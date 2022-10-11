@@ -10,6 +10,7 @@
   "dependencies": {
     "expo": "~46.0.9",
     "expo-constants": "~13.2.3",
+    "expo-dev-client": "~1.3.0",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "expo-updates": "~0.14.6",

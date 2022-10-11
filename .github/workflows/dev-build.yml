@@ -48,3 +48,9 @@ jobs:
     - run: brew tap wix/brew
     - run: brew install applesimutils
     - run: yarn start & yarn detox test --configuration ios --record-logs all
+    - name: Upload artifacts
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-artifacts
+        path: artifacts
