@@ -43,7 +43,7 @@ jobs:
     - run: eas build:list --non-interactive --json --limit=1 --buildProfile=detox | jq -r '.[0].artifacts.buildUrl'
     - run: BUILDURL=$(eas build:list --non-interactive --json --limit=1 --buildProfile=detox | jq -r '.[0].artifacts.buildUrl')
     - run: |
-        curl -L $BUILDURL --output eas-build.tar.gz
+        curl -L $(eas build:list --non-interactive --json --limit=1 --buildProfile=detox | jq -r '.[0].artifacts.buildUrl') --output eas-build.tar.gz
         mkdir -p bin
         tar -xf eas-build.tar.gz -C bin
     - run: brew tap wix/brew
