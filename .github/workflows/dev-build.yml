@@ -34,11 +34,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - name: Setup Expo
-        uses: expo/expo-github-action@v7
-        with:
-          expo-version: latest
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+      uses: expo/expo-github-action@v7
+      with:
+        expo-version: latest
+        eas-version: latest
+        token: ${{ secrets.EXPO_TOKEN }}
     - run: yarn install
     - run: BUILDURL=$(eas build:list --json --limit=1 --buildProfile=detox | jq -r '.[0].artifacts.buildUrl')
     - run: |
