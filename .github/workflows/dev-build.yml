@@ -47,4 +47,4 @@ jobs:
         tar -xf eas-build.tar.gz -C bin
     - run: brew tap wix/brew
     - run: brew install applesimutils
-    - run: yarn detox test --configuration ios.sim.eas.release
+    - run: yarn start & yarn detox test --configuration ios --record-logs all

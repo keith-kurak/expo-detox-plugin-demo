@@ -2,7 +2,7 @@
   "name": "expo-detox-plugin-demo",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --dev-client",
     "ios": "expo run:ios",
     "android": "expo run:android"
   },
@@ -11,6 +11,7 @@
     "expo-constants": "~13.2.3",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
+    "expo-updates": "~0.14.6",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.4",
