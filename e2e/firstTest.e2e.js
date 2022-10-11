@@ -1,5 +1,5 @@
 import { device, element, by } from "detox";
-const { openAppForDebugBuild } = require('./utils/openAppForDebugBuild');
+const { openAppForBuild } = require('./utils/openAppForBuild');
 
 jest.setTimeout(120000);
 
@@ -8,7 +8,7 @@ describe("Example", () => {
     await device.launchApp({
       newInstance: true,
     });
-    await openAppForDebugBuild();
+    await openAppForBuild();
   });
 
   beforeEach(async () => {
